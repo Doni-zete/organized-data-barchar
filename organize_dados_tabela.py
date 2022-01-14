@@ -90,9 +90,9 @@ def main():
   for row in rows:
     cols = row.find_all('td')
     cols = [ele.text.strip() for ele in cols] # Get rid of empty values  
-    if len(cols) > 0:
+    if len(cols) > 2:
       # Mudar as cols if len e name 0 e 1
-      year = cols[1]
+      year = cols[0]
       name = re.sub(r"\([^()]*\)", "", cols[2]).strip()
       data.append([year, name]) 
   
@@ -102,5 +102,3 @@ def main():
   
 # Initialize the application
 main() 
-
-
