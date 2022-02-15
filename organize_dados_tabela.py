@@ -36,9 +36,14 @@ def saveFile(value):
   file.write(u'\ufeff' + formatValuesToSave(value))
   file.close()
   
-def createMatrizFrequency(values, amountUniqueNames):
-  dataValues = [str(ele[0][0:4]) for ele in sorted(values)]
+
   
+def createMatrizFrequency(values, amountUniqueNames):
+  #exemplo
+  #dataValues = [str(ele[0][0:7]) for ele in sorted(values)]
+  # alterar quantidade de caracteres do ano para ser pego
+  dataValues = [str(ele[0]) for ele in sorted(values)]
+
   # The fields of the titles
   data = [['NAME', 'IMAGE'] + dataValues]
   for i in range(amountUniqueNames):
@@ -58,7 +63,11 @@ def yearFrequency(values):
   # [year, name]
   for value in values:
     keyName = value[1].upper()
-    year = [value[0][0:4], uniqueNamesDict[keyName], keyName]
+    #exemplo
+    #dataValues = [str(ele[0][0:7]) for ele in sorted(values)]
+    # alterar quantidade de caracteres do ano para ser pego
+
+    year = [value[0], uniqueNamesDict[keyName], keyName]
 
     # increment the times the current name have apperead.
     uniqueNamesDict[keyName] = uniqueNamesDict[keyName] + 1
@@ -90,10 +99,10 @@ def main():
   for row in rows:
     cols = row.find_all('td')
     cols = [ele.text.strip() for ele in cols] # Get rid of empty values  
-    if len(cols) > 2:
+    if len(cols) >1:
       # Mudar as cols if len e name 0 e 1
       year = cols[0]
-      name = re.sub(r"\([^()]*\)", "", cols[2]).strip()
+      name = re.sub(r"\([^()]*\)", "", cols[1]).strip()
       data.append([year, name]) 
   
   
