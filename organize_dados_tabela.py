@@ -102,11 +102,11 @@ def main():
     if len(cols) >1:
       # Mudar as cols if len e name 0 e 1
       year = cols[0]
-      name = re.sub(r"\([^()]*\)", "", cols[1]).strip()
+      name = re.sub( r"\([^()]*\)", "", cols[1]).strip()
       data.append([year, name]) 
   
-  
-  saveFile(yearFrequency(data))
+  #Mudar a ordem dos anos, para isso adicione o codigo data[::-1] ou remova para deixa na ordem 
+  saveFile(yearFrequency(data[::-1]))
   
   
 # Initialize the application
