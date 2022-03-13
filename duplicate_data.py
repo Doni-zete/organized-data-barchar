@@ -14,7 +14,8 @@ def openFile():
 
 
 def saveFile(values):
-    with open('output_duplicated_year.csv', 'w', newline='', encoding='utf-8') as file:
+    with open('output_duplicated_year.csv', 'w',
+              newline='', encoding='utf-8') as file:
         writer = csv.writer(file, delimiter=';')
         writer.writerows(values)
 
